@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="ko">
+<head>
+	<meta charset="utf-8">
+	<title>2023-11-16 CSS_No Overflow: hidden</title>
+	<link rel="stylesheet" href="css/font_face.css">
+	<style>
+		
+		/*===========reset.css(start) ===========*/
+
+		* { margin: 0; padding: 0; box-sizing: border-box; }
+		*::before, *::after { margin: 0; padding: 0; box-sizing: border-box; } 
+
+		a { color: inherit; text-decoration: none; } 
+
+		img { vertical-align: top; }
+
+		ul, ol, li { list-style: none; }
+
+		button { border: none; background: transparent; font-family: inherit; font-size: inherit; text-align: left; cursor: pointer; }
+
+		.clearfix::after { content: ""; display: block; width: 0; height: 0; font-size: 0; clear: both; }
+
+		/*===========reset.css(end) ============*/
+		
+		p.title {
+			font-size: 40px;
+			font-weight: bold;
+		}
+		
+		div.lists_wrap { /* overflow:hidden 현장에서 쓰이지 않을 것 --> clearfix instead */
+			position: relative;
+			width: 1040px;
+			margin: 100px auto;
+			border: 20px solid lightgray;
+		}
+		div.lists_wrap > div.lists {
+			float: left;
+			position: relative;
+			width: 250px;
+			height: 250px; /* 콘텐츠가 별로 없어서 높이값 주는 것임*/
+			border: 20px solid lightblue;
+			background: lightyellow;
+		}
+		div.lists_wrap > div.lists:nth-of-type(2n) {
+			border: 20px solid lightsalmon;
+		}
+		div.lists_wrap > div.lists > span { 
+			display: inline-block;
+			position: absolute;
+				top: 0;
+				bottom: 0;
+			margin: auto;
+			width: 100%;
+			height: 2.4em; /* 1.2라인 하이트를 줬기 때문, 두 줄이니까 */
+			font-size: 2em;
+			font-weight: bold;
+			line-height: 1.2;
+			text-align: center;
+		}
+/* list-code (start) */
+
+		div.lists_wrap > ul > li {
+			float: left;
+			width: 250px;
+			height: 250px;
+		}
+		div.lists_wrap > ul > li > a {
+			display: inline-block;
+			position: relative;
+			width: 100%;
+			height: 100%;
+			border: 20px solid lightblue;
+			background: lightyellow;
+		}
+		div.lists_wrap > ul > li:nth-child(2n) > a {
+			border: 20px solid lightsalmon;
+		}
+		div.lists_wrap > ul > li > a:hover {
+			background: darkgray;
+			color: #fff;
+		}
+		div.lists_wrap > ul > li > a > span {
+			display: inline-block;
+			position: absolute;
+				top: 0;
+				bottom: 0;
+			margin: auto;
+			width: 100%;
+			height: 2.4em;
+			font-size: 2em;
+			font-weight: bold;
+			line-height: 1.2;
+			text-align: center;
+		}
+
+/* list-code (end)   */
+
+
+		div.lists_wrap > button.dir_btns {
+			position: absolute;
+			display: inline-block;
+			width: 32px;
+			height: 32px;
+			margin: auto;
+			white-space: nowrap;
+		}
+		div.lists_wrap > button.prev {
+			left: -80px;
+			top: 0;
+			bottom: 0;
+			background: url("images/img_prev.png") no-repeat center;
+			background-size: cover;
+			text-indent: -9999999999px;
+		}
+		div.lists_wrap > button.next {
+			right: -80px;
+			top: 0;
+			bottom: 0;
+			background: url("images/img_next.png") no-repeat center;
+			background-size: cover;
+			text-indent: +9999999999px
+		}
+
+	</style>
+
+ </head>
+ <body>
+		
+		<p class="title">2023-11-16 CSS_No Overflow: hidden</p>
+
+		<div class="lists_wrap clearfix">
+			<div class="lists"><span>list<br>01</span></div>
+			<div class="lists"><span>list<br>02</span></div>
+			<div class="lists"><span>list<br>03</span></div>
+			<div class="lists"><span>list<br>04</span></div>
+
+			<button class="dir_btns prev">prev button</button>
+			<button class="dir_btns next">next button</button>
+		</div>
+		
+<!-- 정상 method (start) -->
+
+		<div class="lists_wrap">
+			<ul class="clearfix">
+				<li><a href="#"><span>list<br>01</span></a></li>
+				<li><a href="#"><span>list<br>02</span></a></li>
+				<li><a href="#"><span>list<br>03</span></a></li>
+				<li><a href="#"><span>list<br>04</span></a></li>
+			</ul>
+
+			<button class="dir_btns prev">prev button</button>
+			<button class="dir_btns next">next button</button>
+		</div>
+
+<!-- 정상 method (end )  -->
+
+
+ </body>
+</html>
