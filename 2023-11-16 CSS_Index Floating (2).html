@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="ko">
+<head>
+	<meta charset="utf-8">
+	<title>2023-11-16 CSS_Index Floating</title>
+	<link rel="stylesheet" href="css/font_face.css">
+	<style>
+		
+		/*===========reset.css(start) ===========*/
+
+		* { margin: 0; padding: 0; box-sizing: border-box; }
+		*::before, *::after { margin: 0; padding: 0; box-sizing: border-box; } 
+
+		a { color: inherit; text-decoration: none; } 
+
+		img { vertical-align: top; }
+
+		ul, ol, li { list-style: none; }
+
+		button { border: none; background: transparent; font-family: inherit; font-size: inherit; text-align: left; cursor: pointer; }
+
+		.clearfix::after { content: ""; display: block; width: 0; height: 0; font-size: 0; clear: both; }
+
+		/*===========reset.css(end) ============*/
+
+		body div { border: 1px solid lightgray;	}
+
+		div.wrapper { width: 1100px; margin: 50px auto; padding: 20px; }
+
+		div.wrapper h2 { margin-bottom: 1em; font-size: 2em; line-height: 1.2; }
+
+		div.wrapper > div:not(.web_title) { padding: 20px; }
+		
+		p.title { font-size: 40px; font-weight: bold; }
+
+
+
+		div.web_title {
+			margin-bottom: 20px;
+			padding: 40px 20px;
+			text-align: left;
+		}
+		div.web_main {
+			float: left;
+			width: 60%;
+			margin-right: 20px;
+			margin-bottom: 20px;
+		}
+		div.web_main > p + p {
+			margin-top: 20px;
+		}
+		/*	div.web_main > p { margin-bottom: 20px; }
+			div.web_main > p:nth-last-of-type(1) { margin-bottom: 0; } */
+		
+		div.side_bar {
+			float:right;
+			width: 38.10964%;
+		}
+		div.side_bar > h2 {
+			margin-bottom: 20px;
+		}
+		/* div.side_bar > ul > li {
+			padding-left: 2em;
+			background: url("images/ico_yes.png") no-repeat center;
+			background-size: 1em; <--- 24px이니까, default=16px
+			font-size: 1em;
+			line-height: 1.5;
+		} */
+
+		div.side_bar > ul > li {
+			position: relative;
+			padding-left: 2em;
+			line-height: 1.5;
+		}
+		div.side_bar > ul > li::before {
+			content: "";
+			display: inline-block;
+			position: absolute;
+				left: 0;
+				top: 0;
+				bottom: 0;
+			width: 1em;
+			height: 1em;
+			margin: auto;
+			background: url("images/ico_yes.png") no-repeat center;
+			background-size: 100%;
+		}
+
+		div.footer {
+			clear: both;
+		}
+
+	</style>
+
+ </head>
+ <body>
+
+	<p class="title">2023-11-16 CSS_Index Floating</p>
+
+	<div class="wrapper clearfix">
+		<div class="web_title">
+			<h1>사이트 제목</h1>
+		</div>
+		
+		<div class="web_main">
+			<h2>본문</h2>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+		</div>
+		
+		<div class="side_bar">
+			<h2>사이드 바</h2>
+			<ul>
+				<li>Lorem ipsum dolor, sit amet.</li>
+				<li>Lorem ipsum dolor, sit amet.</li>
+				<li>Lorem ipsum dolor, sit amet.</li>
+			</ul>
+		</div>
+		
+		<div class="footer">
+			<h2>푸터</h2>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed, quae.</p>
+		</div>
+	</div>
+
+ </body>
+</html>
